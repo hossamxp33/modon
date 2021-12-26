@@ -7,6 +7,7 @@ import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.core.view.isVisible
@@ -30,8 +31,7 @@ import java.util.*
 import javax.inject.Inject
 
 
-class HomeFragment : Fragment(), DatePickerDialog.OnDateSetListener
-   {
+class HomeFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     var day = 0
     var month: Int = 0
     var year: Int = 0
@@ -50,17 +50,22 @@ class HomeFragment : Fragment(), DatePickerDialog.OnDateSetListener
             BaseApplication.appComponent.inject(this)
         }
     }
+
     lateinit var view: HomeFragmentBinding
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? { view = DataBindingUtil.inflate(inflater,
+        savedInstanceState: Bundle?
+    ): View? {
+        view = DataBindingUtil.inflate(
+            inflater,
             R.layout.home_fragment, container, false
         )
 
         view.listener = ClickHandler()
         view.context = context as MainActivity
+
 
 
 
@@ -98,21 +103,18 @@ class HomeFragment : Fragment(), DatePickerDialog.OnDateSetListener
                         }
                         viewModel.intents.send(MainIntent.ErrorDisplayed(it))
                     } else {
-
                         if (it.progress == true) {
                             viewModel.intents.send(MainIntent.Initialize(it))
                         } else {
-                            //        view.progress.visibility = View.GONE
 
-                            //                   if (it.homepagedata?.data.isNullOrEmpty())
-//
-//                            ///newOffersAdapter
-//                            myOrdersAdapter.submitList(it.data)
-//
-//                            else
-//                                view.noOrderFoundLayout.isVisible = it.noOrderYet!!
-
-
+                            val arrayAdapter = ArrayAdapter(
+                                requireContext(),
+                                R.layout.dropdown_item,
+                                it.homepagedata?.data?.map { it.name } as ArrayList)
+                            val autocompleteTV = view.autoCompleteTextView
+                            if (it.homepagedata?.data.isNullOrEmpty())
+                            ///newOffersAdapter
+                                autocompleteTV.setAdapter(arrayAdapter)
                         }
                     }
                 }
