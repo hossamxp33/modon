@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">modon</string>
+
+    <string name="textView">Text View</string>
+
+    <string name="whereGo">where do you want to go?</string>
+
+    <string name="date">Date</string>
+
+    <string name="chooseStartingCity">Choose Starting City</string>
+
+    <string name="chooseArrivalCity">Choose the city of arrival</string>
+
+    <string name="search">Search</string>
+
+    <string name="flightList">List of flights to </string>
+
+</resources>

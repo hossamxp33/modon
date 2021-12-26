@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1062744490148",
+    "project_id": "modon-abd88",
+    "storage_bucket": "modon-abd88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062744490148:android:1ee1f650c8201966346631",
+        "android_client_info": {
+          "package_name": "com.tarwej.modon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062744490148-44o7d3lha7l1cm4kuhooso70mv888hki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9e3uxly8MPpxN9d2-d7M6AbrlMbvdMTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062744490148-44o7d3lha7l1cm4kuhooso70mv888hki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

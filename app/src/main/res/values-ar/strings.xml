@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">modon</string>
+
+    <string name="whereGo">أين تريد الذهاب ؟</string>
+
+    <string name="date">التاريخ</string>
+
+    <string name="chooseStartingCity">أختر مدينة الانطلاق</string>
+
+    <string name="chooseArrivalCity">أختر مدينة الوصول</string>
+
+    <string name="search">بحث</string>
+    <string name="flightList">قائمة الرحلات المتجهة الي  </string>
+
+</resources>
