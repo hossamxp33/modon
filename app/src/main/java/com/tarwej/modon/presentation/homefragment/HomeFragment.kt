@@ -31,7 +31,7 @@ import java.util.*
 import javax.inject.Inject
 
 
-class HomeFragment : Fragment(), DatePickerDialog.OnDateSetListener {
+class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSetListener {
     var day = 0
     var month: Int = 0
     var year: Int = 0
@@ -106,13 +106,13 @@ class HomeFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                         if (it.progress == true) {
                             viewModel.intents.send(MainIntent.Initialize(it))
                         } else {
-
+                        var arrayList =     it.homepagedata?.data?.map { it.name }
                             val arrayAdapter = ArrayAdapter(
                                 requireContext(),
                                 R.layout.dropdown_item,
-                                it.homepagedata?.data?.map { it.name } as ArrayList)
+                                arrayList!!
+                               )
                             val autocompleteTV = view.autoCompleteTextView
-                            if (it.homepagedata?.data.isNullOrEmpty())
                             ///newOffersAdapter
                                 autocompleteTV.setAdapter(arrayAdapter)
                         }

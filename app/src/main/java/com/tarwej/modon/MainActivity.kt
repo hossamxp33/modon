@@ -19,14 +19,20 @@ class MainActivity : AppCompatActivity() , HasAndroidInjector {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var fragmentFactory : FragmentFactory
+
 
     private val viewModel by viewModels<HomeViewModel> { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        AndroidInjection.inject(this)
+        supportFragmentManager.fragmentFactory = fragmentFactory
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        AndroidInjection.inject(this)
 
   //      supportFragmentManager.fragmentFactory = fragmentFactory
 

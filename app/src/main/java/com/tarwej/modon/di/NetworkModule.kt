@@ -55,7 +55,6 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
     }
 
 
-    fun inject(app: MainActivity)
     fun inject(app: HomeFragment)
 
 }
