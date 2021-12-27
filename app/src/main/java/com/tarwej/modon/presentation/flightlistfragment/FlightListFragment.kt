@@ -35,8 +35,10 @@ class FlightListFragment : Fragment() {
         view.shimmerViewContainer.startShimmerAnimation()
 
 //        view.listener = ClickHandler()
-//        view.context = context as MainActivity
+      // view.context = context as MainActivity
 //
+
+        view.cityName = requireArguments().getString("cityName")
 
 
         // notes = view.note.text.toString()

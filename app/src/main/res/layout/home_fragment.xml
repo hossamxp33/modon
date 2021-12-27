@@ -19,6 +19,10 @@
             type="com.tarwej.modon.ClickHandler" />
 
 
+        <variable
+            name="cityName"
+            type="String" />
+
     </data>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -175,7 +179,9 @@
             android:id="@+id/chooseStartCityLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/whereGoLayout">
@@ -184,7 +190,7 @@
                 android:id="@+id/pin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/pin"
                 app:layout_constraintBottom_toBottomOf="@+id/startingCity"
@@ -197,12 +203,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/startingCity"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:padding="0dp"
                 android:text="@string/chooseStartingCity"
                 android:textSize="16sp"
+
                 app:layout_constraintEnd_toStartOf="@+id/rightArrow"
                 app:layout_constraintStart_toEndOf="@+id/pin"
                 app:layout_constraintTop_toTopOf="parent">
@@ -212,13 +219,14 @@
                         and make its input type to none-->
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTextView"
+                    style="@style/din"
+                    android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    style="@style/din"
-                    android:textSize="16sp"
-                    android:textColor="@color/activity"
                     android:inputType="none"
-                    android:text="@string/chooseStartingCity" />
+                    android:text="@string/chooseStartingCity"
+                    android:textColor="@color/activity"
+                    android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -227,8 +235,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="12dp"
                 android:src="@drawable/down_24"
+
                 app:layout_constraintBottom_toBottomOf="@+id/startingCity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -254,7 +263,9 @@
             android:id="@+id/chooseArrivalCityLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chooseStartCityLayout">
@@ -263,7 +274,7 @@
                 android:id="@+id/pin2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/pin"
                 app:layout_constraintBottom_toBottomOf="@+id/arrivalCity"
@@ -274,7 +285,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/arrivalCity"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/chooseArrivalCity"
@@ -283,18 +294,19 @@
                 app:layout_constraintStart_toEndOf="@+id/pin2"
                 app:layout_constraintTop_toTopOf="parent">
 
-            <!-- Inside text input layout add
+                <!-- Inside text input layout add
                   an auto complete text view
                     and make its input type to none-->
-            <AutoCompleteTextView
-                android:id="@+id/arrivalCityTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/din"
-                android:textSize="16sp"
-                android:textColor="@color/activity"
-                android:inputType="none"
-                android:text="@string/chooseArrivalCity" />
+                <AutoCompleteTextView
+                    android:id="@+id/arrivalCityTextView"
+                    style="@style/din"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="none"
+                    android:textAlignment="center"
+                    android:text="@string/chooseArrivalCity"
+                    android:textColor="@color/activity"
+                    android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -303,7 +315,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="12dp"
                 android:src="@drawable/down_24"
                 app:layout_constraintBottom_toBottomOf="@+id/arrivalCity"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -337,7 +349,7 @@
             android:text="@string/search"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:onClick="@{()->listener.flightListFragment(context)}"
+            android:onClick="@{()->listener.flightListFragment(context,cityName)}"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

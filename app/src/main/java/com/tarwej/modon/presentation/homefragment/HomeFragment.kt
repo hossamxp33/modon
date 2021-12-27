@@ -24,6 +24,7 @@ import com.tarwej.modon.helper.BaseApplication
 import com.tarwej.modon.presentation.homefragment.mvi.HomeViewModel
 import com.tarwej.modon.presentation.homefragment.mvi.MainIntent
 import com.tarwej.modon.presentation.homefragment.mvi.UserError
+import kotlinx.android.synthetic.main.dropdown_item.*
 import kotlinx.android.synthetic.main.flight_list_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.coroutines.flow.collect
@@ -38,7 +39,7 @@ class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSet
     var myDay = 0
     var myMonth: Int = 0
     var myYear: Int = 0
-
+  var cityName : String ? = null
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -106,15 +107,24 @@ class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSet
                         if (it.progress == true) {
                             viewModel.intents.send(MainIntent.Initialize(it))
                         } else {
-                        var arrayList =     it.homepagedata?.data?.map { it.name }
+                        val arrayList = it.homepagedata?.data?.map { it.name }
                             val arrayAdapter = ArrayAdapter(
                                 requireContext(),
                                 R.layout.dropdown_item,
-                                arrayList!!
+                                resources.getStringArray(R.array.programming_languages)
                                )
-                            val autocompleteTV = view.autoCompleteTextView
-                            ///newOffersAdapter
-                                autocompleteTV.setAdapter(arrayAdapter)
+
+                            val startCityTextView = view.autoCompleteTextView
+
+                            startCityTextView.setAdapter(arrayAdapter)
+
+                            val arrivalCityTextView = view.arrivalCityTextView
+
+                            arrivalCityTextView.setAdapter(arrayAdapter)
+
+                            cityName = arrivalCityTextView.toString()
+                            view.cityName = cityName
+
                         }
                     }
                 }

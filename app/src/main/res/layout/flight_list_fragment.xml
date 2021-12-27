@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+   <variable
+       name="cityName"
+       type="String" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -100,6 +102,8 @@
             android:orientation="vertical">
 
             <include layout="@layout/shimmer_viewpager" />
+            <include layout="@layout/shimmer_list" />
+            <include layout="@layout/shimmer_list" />
 
 
         </LinearLayout>
@@ -112,7 +116,8 @@
         style="@style/topicTitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/flightList"
+        android:text="@{(@string/flightList) + cityName }"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/indicator" />
 

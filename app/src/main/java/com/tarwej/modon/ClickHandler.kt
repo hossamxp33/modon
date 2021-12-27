@@ -12,7 +12,7 @@ class ClickHandler {
 
 
     //var Pref: PreferenceHelper? = null
-    var context : Context ? =null
+    var context: Context? = null
 
 //    fun SwitchToCities(context: Context) {
 //        val i = Intent(context, CitiesActivity::class.java)
@@ -29,15 +29,17 @@ class ClickHandler {
 //        frag.apply {
 //            show((context as MainActivity).supportFragmentManager, AddressBottomFragment.TAG)
 //        }
-  //  }
+    //  }
 
 
-
-
-
-    fun flightListFragment(context: Context) {
+    fun flightListFragment(context: Context, cityName: String) {
         (context as MainActivity)
-        switchBetweenFragments(context, FlightListFragment())
+
+        val fragment = FlightListFragment()
+        val bundle = Bundle()
+        bundle.putString("cityName", cityName)
+        fragment.arguments = bundle
+        switchBetweenFragments(context, fragment)
     }
 
 
