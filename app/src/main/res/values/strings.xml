@@ -12,13 +12,9 @@
     <string name="chooseArrivalCity">Choose the city of arrival</string>
 
     <string name="search">Search</string>
+    <string name="L_E">200 L.E</string>
 
-    <string name="flightList">List of flights to </string>
+    <string name="flightList">List of flights to  \u0020 , </string>
 
-    <string-array name="programming_languages">
-        <item>Java</item>
-        <item>Kotlin</item>
-        <item>Python</item>
-        <item>CPP</item>
-    </string-array>
+
 </resources>

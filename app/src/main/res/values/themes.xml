@@ -27,6 +27,12 @@
         <item name="android:textColor">@color/activity</item>
         <item name="android:fontFamily">@font/diin_bold</item>
 
+    </style>
+    <style name="grayDin">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:fontFamily">@font/cocon_next_arabic</item>
+        <item name="android:fontWeight">400</item>
 
     </style>
     <style name="button" parent="@android:style/Widget.Button">
@@ -56,4 +62,18 @@
         <item name="android:textStyle">bold</item>
 
     </style>
+
+    <style name="blackTripListStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/diin_bold</item>
+
+    </style>
+    <style name="tripListStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/activity</item>
+        <item name="android:fontFamily">@font/diin_bold</item>
+
+    </style>
+
 </resources>

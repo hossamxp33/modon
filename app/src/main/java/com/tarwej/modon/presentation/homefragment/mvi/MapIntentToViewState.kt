@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.first
  */
 suspend fun mapIntentToViewState(
     intent: MainIntent,
-    Datarepo: DataRepo,
-    loadMainData: suspend () -> Flow<Result<CitiesModel>> = { Datarepo.getCities },
+    dataRepo: DataRepo,
+    loadMainData: suspend () -> Flow<Result<CitiesModel>> = { dataRepo.getCities },
 ) = when (intent) {
     is MainIntent.Initialize -> proceedWithInitialize(loadMainData,intent)
     is MainIntent.ErrorDisplayed -> intent.viewState.copy(error = null)

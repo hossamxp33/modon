@@ -206,10 +206,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:padding="0dp"
-                android:text="@string/chooseStartingCity"
-                android:textSize="16sp"
-
+                android:textColorHint="@color/activity"
+                android:hint="@string/chooseStartingCity"
                 app:layout_constraintEnd_toStartOf="@+id/rightArrow"
                 app:layout_constraintStart_toEndOf="@+id/pin"
                 app:layout_constraintTop_toTopOf="parent">
@@ -223,10 +221,12 @@
                     android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
                     android:inputType="none"
-                    android:text="@string/chooseStartingCity"
-                    android:textColor="@color/activity"
-                    android:textSize="16sp" />
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    app:boxBackgroundColor="@android:color/transparent"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -237,7 +237,6 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="12dp"
                 android:src="@drawable/down_24"
-
                 app:layout_constraintBottom_toBottomOf="@+id/startingCity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -288,8 +287,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/chooseArrivalCity"
-                android:textSize="16sp"
+                android:textColorHint="@color/activity"
+                android:hint="@string/chooseArrivalCity"
                 app:layout_constraintEnd_toStartOf="@+id/rightArrow2"
                 app:layout_constraintStart_toEndOf="@+id/pin2"
                 app:layout_constraintTop_toTopOf="parent">
@@ -302,11 +301,12 @@
                     style="@style/din"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
                     android:inputType="none"
-                    android:textAlignment="center"
-                    android:text="@string/chooseArrivalCity"
-                    android:textColor="@color/activity"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:boxBackgroundColor="@android:color/transparent" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -349,8 +349,6 @@
             android:text="@string/search"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:onClick="@{()->listener.flightListFragment(context,cityName)}"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

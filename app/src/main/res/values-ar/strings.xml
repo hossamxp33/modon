@@ -9,14 +9,9 @@
     <string name="chooseStartingCity">أختر مدينة الانطلاق</string>
 
     <string name="chooseArrivalCity">أختر مدينة الوصول</string>
+    <string name="L_E">200 جنيه</string>
 
     <string name="search">بحث</string>
-    <string name="flightList">قائمة الرحلات المتجهة الي  </string>
+    <string name="flightList">قائمة الرحلات المتجهة الي  \u0020  </string>
 
-    <string-array name="programming_languages">
-        <item>Java</item>
-        <item>Kotlin</item>
-        <item>Python</item>
-        <item>CPP</item>
-    </string-array>
 </resources>

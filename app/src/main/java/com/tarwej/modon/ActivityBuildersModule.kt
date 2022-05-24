@@ -1,9 +1,9 @@
-package com.example.dagger.di.module
+package com.tarwej.modon
 
 import com.example.dagger.di.scopes.ActivityScope
-import com.example.satafood.presentaion.mainactivity.di.MainModule
 
 import com.tarwej.modon.MainActivity
+import com.tarwej.modon.di.MainModule
 import com.tarwej.modon.helper.FragmentFactoryModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

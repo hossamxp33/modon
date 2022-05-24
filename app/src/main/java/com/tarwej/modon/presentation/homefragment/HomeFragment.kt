@@ -1,15 +1,13 @@
 package com.tarwej.modon.presentation.homefragment
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
-import android.widget.TimePicker
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -21,6 +19,8 @@ import com.tarwej.modon.MainActivity
 import com.tarwej.modon.R
 import com.tarwej.modon.databinding.HomeFragmentBinding
 import com.tarwej.modon.helper.BaseApplication
+import com.tarwej.modon.helper.MakeToast
+import com.tarwej.modon.presentation.flightlistfragment.FlightListFragment
 import com.tarwej.modon.presentation.homefragment.mvi.HomeViewModel
 import com.tarwej.modon.presentation.homefragment.mvi.MainIntent
 import com.tarwej.modon.presentation.homefragment.mvi.UserError
@@ -39,7 +39,9 @@ class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSet
     var myDay = 0
     var myMonth: Int = 0
     var myYear: Int = 0
-  var cityName : String ? = null
+    var startCityName : String ? = null
+    var arrivalCityName : String ? = null
+    var selectionDate: String ? = null
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -67,9 +69,6 @@ class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSet
         view.listener = ClickHandler()
         view.context = context as MainActivity
 
-
-
-
         viewModel.intents.trySend(MainIntent.Initialize(viewModel.state.value!!))
 
         getAllData()
@@ -79,16 +78,18 @@ class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSet
             day = calendar.get(Calendar.DAY_OF_MONTH)
             month = calendar.get(Calendar.MONTH)
             year = calendar.get(Calendar.YEAR)
+
             val datePickerDialog =
-                DatePickerDialog(requireContext(), this, year, month, day)
+                DatePickerDialog(requireContext(),AlertDialog.THEME_DEVICE_DEFAULT_DARK,  this, year, month, day)
             datePickerDialog.show()
+
         }
         return view.root
     }
 
     fun getAllData() {
         lifecycleScope.launchWhenStarted {
-            viewModel.state.collect {
+            viewModel.state.collect { it ->
                 if (it != null) {
 
                     if (it.error != null) {
@@ -111,7 +112,7 @@ class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSet
                             val arrayAdapter = ArrayAdapter(
                                 requireContext(),
                                 R.layout.dropdown_item,
-                                resources.getStringArray(R.array.programming_languages)
+                                arrayList!!
                                )
 
                             val startCityTextView = view.autoCompleteTextView
@@ -122,8 +123,14 @@ class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSet
 
                             arrivalCityTextView.setAdapter(arrayAdapter)
 
-                            cityName = arrivalCityTextView.toString()
-                            view.cityName = cityName
+                            view.searchButton.setOnClickListener {
+                               startCityName = startCityTextView.text.toString()
+                                arrivalCityName = arrivalCityTextView.text.toString()
+                                flightListFragment()
+
+                            }
+
+
 
                         }
                     }
@@ -133,15 +140,53 @@ class HomeFragment @Inject constructor(): Fragment(), DatePickerDialog.OnDateSet
         }
     }
 
+    private fun flightListFragment(){
+        if (!(startCityName == null || startCityName == "")){
+            if (!(arrivalCityName == null || arrivalCityName == "")) {
+                if (!(selectionDate == null || selectionDate == "")) {
+
+
+                    view.cityName = "  $startCityName"
+
+                    val fragment = FlightListFragment()
+                    val bundle = Bundle()
+                    bundle.putString("startCityName", startCityName)
+                    bundle.putString("arrivalCityName", arrivalCityName)
+                    bundle.putString("cityName", startCityName)
+                    bundle.putString("selectionDate", selectionDate)
+
+                    fragment.arguments = bundle
+                    ClickHandler().switchBetweenFragments(requireContext(), fragment)
+                }else{
+                    MakeToast().Warning_MotionToast("الرجاء اختيار الوقت",requireActivity())
+
+                }
+
+            } else {
+
+                MakeToast().Warning_MotionToast("الرجاء اختيار مدينة الوصول ",requireActivity())
+
+            }
+
+    } else {
+
+            MakeToast().Warning_MotionToast(" الرجاء اختيار مدينة الانطلاق",requireActivity())
+
+        }
+    }
+
+
     override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
         myDay = day
         myYear = year
         myMonth = month
-
         view.selectionDate.isVisible = true
 
         view.selectionDate.text =
-            "السنة:  $myYear   الشهر: $myMonth  اليوم: $myDay "
+            "$myYear-$myMonth-$myDay "
+
+        selectionDate = view.selectionDate.text.toString()
+
     }
 
 

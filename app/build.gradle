@@ -12,11 +12,13 @@ android {
 
     defaultConfig {
         applicationId "com.tarwej.modon"
-        minSdk 21
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
     }
 
     buildTypes {
@@ -95,8 +97,8 @@ dependencies {
 
     //noinspection GradleCompatible
     implementation 'com.android.support:recyclerview-v7:29.0.0'
-    implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
 
+    implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
 
     ///////shimmer
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
@@ -133,4 +135,8 @@ dependencies {
     // Coroutines - Retrofit extention
     implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0")
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+
+    implementation 'com.github.Spikeysanju:MotionToast:1.4'
+
 }

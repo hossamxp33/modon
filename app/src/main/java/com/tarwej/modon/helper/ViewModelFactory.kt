@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentFactory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tarwej.modon.di.AppComponent
+import com.tarwej.modon.presentation.flightlistfragment.FlightListFragment
 import com.tarwej.modon.presentation.homefragment.HomeFragment
 import dagger.Binds
 import dagger.MapKey
@@ -84,6 +85,11 @@ abstract class FragmentFactoryModule {
     @IntoMap
     @FragmentKey(HomeFragment::class)
     abstract fun bindMainFragment(fragment : HomeFragment) : Fragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(FlightListFragment::class)
+    abstract fun bindMFlightListFragment(FlightFragment : FlightListFragment) : Fragment
 
 
 

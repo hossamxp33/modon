@@ -1,14 +1,14 @@
 package com.tarwej.modon.di
 
 import android.content.Context
-import com.example.dagger.di.module.ActivityBuildersModule
-import com.example.satafood.presentaion.mainactivity.di.MainModule
-import com.tarwej.modon.MainActivity
+import com.tarwej.modon.ActivityBuildersModule
+
 
 import com.tarwej.modon.datalayer.APIServices
 import com.tarwej.modon.helper.Constants.Companion.BASE_URL
 import com.tarwej.modon.helper.FragmentFactoryModule
 import com.tarwej.modon.helper.ViewModelBuilderModule
+import com.tarwej.modon.presentation.flightlistfragment.FlightListFragment
 import com.tarwej.modon.presentation.homefragment.HomeFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -56,6 +56,8 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
 
 
     fun inject(app: HomeFragment)
+    fun inject(app: FlightListFragment)
+
 
 }
 
